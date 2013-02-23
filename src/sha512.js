@@ -1,4 +1,4 @@
-(function() {/*
+(function(window) {/*
  A JavaScript implementation of the SHA family of hashes, as defined in FIPS
  PUB 180-2 as well as the corresponding HMAC implementation as defined in
  FIPS PUB 198a
@@ -30,4 +30,4 @@ T;w+=n){b=h[0];f=h[1];e=h[2];g=h[3];j=h[4];m=h[5];l=h[6];B=h[7];for(k=0;k<M;k+=1
 h[1].a,h[1].b,h[2].a,h[2].b,h[3].a,h[3].b,h[4].a,h[4].b,h[5].a,h[5].b,h[6].a,h[6].b,h[7].a,h[7].b]:p("Unexpected error in SHA-2 implementation");return E}
 window.jsSHA=function(a,b,d){var f=r,e=r,g=0,j=[0],m="",l=r,m="undefined"!==typeof d?d:"UTF8";"UTF8"===m||"UTF16"===m||p("encoding must be UTF8 or UTF16");"HEX"===b?(0!==a.length%2&&p("srcString of HEX type must be in byte increments"),l=y(a),g=l.binLen,j=l.value):"ASCII"===b||"TEXT"===b?(l=v(a,m),g=l.binLen,j=l.value):"B64"===b?(l=C(a),g=l.binLen,j=l.value):p("inputFormat must be HEX, TEXT, ASCII, or B64");this.getHash=function(a,b,d){var h=r,m=j.slice(),l="";switch(b){case "HEX":h=F;break;case "B64":h=
 G;break;default:p("format must be HEX or B64")}"SHA-384"===a?(r===f&&(f=$(m,g,a)),l=h(f,H(d))):"SHA-512"===a?(r===e&&(e=$(m,g,a)),l=h(e,H(d))):p("Chosen SHA variant is not supported");return l};this.getHMAC=function(a,b,d,e,f){var l,k,n,u,q,z=[],A=[],s=r;switch(e){case "HEX":l=F;break;case "B64":l=G;break;default:p("outputFormat must be HEX or B64")}"SHA-384"===d?(n=128,q=384):"SHA-512"===d?(n=128,q=512):p("Chosen SHA variant is not supported");"HEX"===b?(s=y(a),u=s.binLen,k=s.value):"ASCII"===b||
-"TEXT"===b?(s=v(a,m),u=s.binLen,k=s.value):"B64"===b?(s=C(a),u=s.binLen,k=s.value):p("inputFormat must be HEX, TEXT, ASCII, or B64");a=8*n;b=n/4-1;n<u/8?(k=$(k,u,d),k[b]&=4294967040):n>u/8&&(k[b]&=4294967040);for(n=0;n<=b;n+=1)z[n]=k[n]^909522486,A[n]=k[n]^1549556828;d=$(A.concat($(z.concat(j),a+g,d)),a+q,d);return l(d,H(f))}};})();
+"TEXT"===b?(s=v(a,m),u=s.binLen,k=s.value):"B64"===b?(s=C(a),u=s.binLen,k=s.value):p("inputFormat must be HEX, TEXT, ASCII, or B64");a=8*n;b=n/4-1;n<u/8?(k=$(k,u,d),k[b]&=4294967040):n>u/8&&(k[b]&=4294967040);for(n=0;n<=b;n+=1)z[n]=k[n]^909522486,A[n]=k[n]^1549556828;d=$(A.concat($(z.concat(j),a+g,d)),a+q,d);return l(d,H(f))}};})(this);
